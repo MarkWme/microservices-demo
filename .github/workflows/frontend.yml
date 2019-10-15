@@ -12,6 +12,6 @@ jobs:
     - name: pwd
       run: pwd
     - name: ls
-      run: ls -al
+      run: ls . -al
     - name: Build frontend Docker container image
-      run: docker build ./src/frontend --file Dockerfile --tag frontend:$(date +%s)
+      run: docker build ./src/frontend/ --tag frontend:$(date +%s)
