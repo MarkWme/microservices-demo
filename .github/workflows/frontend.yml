@@ -12,8 +12,6 @@ jobs:
     - name: Github Packages authentication
       run: docker login docker.pkg.github.com -u MarkWme -p ${{ secrets.PACKAGES_TOKEN }} 
     - name: Build frontend Docker container image
-      run: docker build ./src/frontend/ --tag frontend:$(date +%s)
-    - name: Tag frontend image
-      run: docker tag frontend:$(date +%s) docker.pkg.github.com/markwme/microservices-demo/frontend:$(date +%s)
+      run: docker build ./src/frontend/ --tag docker.pkg.github.com/markwme/microservices-demo/frontend:$(date +%s)
     - name: Push image to GitHub packages
       run: docker push docker.pkg.github.com/markwme/microservices-demo/frontend:$(date +%s)
