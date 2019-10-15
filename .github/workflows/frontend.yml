@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Github Packages authentication
-      run: docker login docker.pkg.github.com --username MarkWme
+      run: docker login docker.pkg.github.com -u MarkWme -p ${{ secrets.PACKAGES_TOKEN }} 
     - name: Build frontend Docker container image
       run: docker build ./src/frontend/ --tag docker.pkg.github.com/MarkWme/microservices-demo/frontend:$(date +%s)
     - name: Push image to GitHub packages
