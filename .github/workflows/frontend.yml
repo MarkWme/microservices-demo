@@ -9,9 +9,9 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - name: pwd
-      run: pwd
-    - name: ls
-      run: ls . -al
+    - name: Github Packages authentication
+      run: docker login docker.pkg.github.com --username MarkWme
     - name: Build frontend Docker container image
-      run: docker build ./src/frontend/ --tag frontend:$(date +%s)
+      run: docker build ./src/frontend/ --tag docker.pkg.github.com/MarkWme/microservices-demo/frontend:$(date +%s)
+    - name: Push image to GitHub packages
+      run: docker push docker.pkg.github.com/MarkWme/microservices-demo/frontend:$(date +%s)
